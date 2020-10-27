@@ -1,0 +1,36 @@
+From 97c1f595e5931de28ee8f255de0b422692976de1 Mon Sep 17 00:00:00 2001
+From: Chris Morgan <macromorgan@hotmail.com>
+Date: Wed, 21 Jul 2021 16:48:30 -0500
+Subject: [PATCH 24/32] FROMLIST(v1): drm/panfrost: devfreq: Don't display
+ error for EPROBE_DEFER
+
+Set a condition for the message of "Couldn't set OPP regulators" to not
+display if the error code is EPROBE_DEFER. Note that I used an if
+statement to capture the condition instead of the dev_err_probe
+function because I didn't want to change the DRM_DEV_ERROR usage.
+
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Reviewed-by: Steven Price <steven.price@arm.com>
+Signed-off-by: Steven Price <steven.price@arm.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20210721214830.25690-1-macroalpha82@gmail.com
+---
+ drivers/gpu/drm/panfrost/panfrost_devfreq.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/panfrost/panfrost_devfreq.c b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
+index 3644652f726f..194af7f607a6 100644
+--- a/drivers/gpu/drm/panfrost/panfrost_devfreq.c
++++ b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
+@@ -106,7 +106,8 @@ int panfrost_devfreq_init(struct panfrost_device *pfdev)
+ 	if (ret) {
+ 		/* Continue if the optional regulator is missing */
+ 		if (ret != -ENODEV) {
+-			DRM_DEV_ERROR(dev, "Couldn't set OPP regulators\n");
++			if (ret != -EPROBE_DEFER)
++				DRM_DEV_ERROR(dev, "Couldn't set OPP regulators\n");
+ 			return ret;
+ 		}
+ 	}
+-- 
+2.17.1
+

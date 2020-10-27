@@ -1,0 +1,59 @@
+From 3c167ba0adfcc46994d7399adb3644517f93d7b9 Mon Sep 17 00:00:00 2001
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Date: Fri, 27 Aug 2021 16:22:09 +0000
+Subject: [PATCH 29/32] FROMLIST(v1): ARM: dts: exynos: Add CPU topology to
+ Exynos5422
+
+Describe Exynos5422 CPU topology.
+
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+---
+ arch/arm/boot/dts/exynos5422-cpus.dtsi | 32 ++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/arch/arm/boot/dts/exynos5422-cpus.dtsi b/arch/arm/boot/dts/exynos5422-cpus.dtsi
+index 4b641b9b8179..412a0bb4b988 100644
+--- a/arch/arm/boot/dts/exynos5422-cpus.dtsi
++++ b/arch/arm/boot/dts/exynos5422-cpus.dtsi
+@@ -21,6 +21,38 @@
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+ 
++		cpu-map {
++			cluster0 {
++				core0 {
++					cpu = <&cpu0>;
++				};
++				core1 {
++					cpu = <&cpu1>;
++				};
++				core2 {
++					cpu = <&cpu2>;
++				};
++				core3 {
++					cpu = <&cpu3>;
++				};
++			};
++
++			cluster1 {
++				core0 {
++					cpu = <&cpu4>;
++				};
++				core1 {
++					cpu = <&cpu5>;
++				};
++				core2 {
++					cpu = <&cpu6>;
++				};
++				core3 {
++					cpu = <&cpu7>;
++				};
++			};
++		};
++
+ 		cpu0: cpu@100 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+-- 
+2.17.1
+
