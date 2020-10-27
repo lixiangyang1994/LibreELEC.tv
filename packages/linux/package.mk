@@ -27,6 +27,12 @@ case "${LINUX}" in
     PKG_URL="https://github.com/raspberrypi/linux/archive/${PKG_VERSION}.tar.gz"
     PKG_SOURCE_NAME="linux-${LINUX}-${PKG_VERSION}.tar.gz"
     ;;
+  samsung)
+    PKG_VERSION="0985dc528812f818fa94366354b9031a2aebc306" # 5.11.6
+    PKG_SHA256="a57a5dd7cc9d83b7ba0659e923d4942decf8743a6f6c26ae0cdf8d30a145e8de"
+    PKG_URL="https://github.com/torvalds/linux/archive/$PKG_VERSION.tar.gz"
+    PKG_SOURCE_NAME="linux-$LINUX-$PKG_VERSION.tar.gz"
+    ;;
   *)
     PKG_VERSION="5.10.21"
     PKG_SHA256="9e7fe6ff1665bb578e8a88e761f6727b7f170a81563b93c1d49bd0bb7d7de2af"
