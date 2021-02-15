@@ -21,6 +21,12 @@ case "${LINUX}" in
     PKG_URL="https://github.com/torvalds/linux/archive/${PKG_VERSION}.tar.gz"
     PKG_SOURCE_NAME="linux-${LINUX}-${PKG_VERSION}.tar.gz"
     ;;
+  nxp)
+    PKG_VERSION="aa7258f8f3d48a29bc024ea8c5145bdc4a980e4d" # 5.11.11
+    PKG_SHA256="e151211f1094bf7c0b14f260ba8e219820013e30a1a83dd9abcd43f3f9629b98"
+    PKG_URL="https://github.com/torvalds/linux/archive/${PKG_VERSION}.tar.gz"
+    PKG_SOURCE_NAME="linux-${LINUX}-${PKG_VERSION}.tar.gz"
+    ;;
   raspberrypi)
     PKG_VERSION="11d7babee19ce8ea0c25aef8801e4e18568781ba" # 5.10.25
     PKG_SHA256="d39cbf81f698cb592937f0148cf35b82ab36418ba62265d2f7e048615497afe7"
