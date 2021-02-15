@@ -206,7 +206,7 @@ devices = \
   },
   'NXP': {
     'iMX6': {
-      'cubox': {
+      'cubox-i': {
         'dtb': '',
         'config': 'mx6cuboxi_defconfig'
       },
