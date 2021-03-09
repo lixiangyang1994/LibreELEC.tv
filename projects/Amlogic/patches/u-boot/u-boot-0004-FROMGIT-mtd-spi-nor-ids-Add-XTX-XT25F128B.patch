@@ -1,0 +1,53 @@
+From 5a6d62f6a53b0f0ef63a8b44a429e6eff6f85768 Mon Sep 17 00:00:00 2001
+From: Chris Morgan <macromorgan@hotmail.com>
+Date: Thu, 5 Aug 2021 16:26:41 +0800
+Subject: [PATCH 04/31] FROMGIT: mtd: spi-nor-ids: Add XTX XT25F128B
+
+Adds support for XT25F128B used on Odroid Go Advance. Unfortunately
+this chip uses a continuation code which I cannot seem to parse, so
+there are possibly going to be collisions with chips that use the same
+manufacturer/ID.
+
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+---
+ drivers/mtd/spi/Kconfig       | 6 ++++++
+ drivers/mtd/spi/spi-nor-ids.c | 4 ++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/drivers/mtd/spi/Kconfig b/drivers/mtd/spi/Kconfig
+index f8db8e5213..8c797d1e03 100644
+--- a/drivers/mtd/spi/Kconfig
++++ b/drivers/mtd/spi/Kconfig
+@@ -162,6 +162,12 @@ config SPI_FLASH_XMC
+ 	  Add support for various XMC (Wuhan Xinxin Semiconductor
+ 	  Manufacturing Corp.) SPI flash chips (XM25xxx)
+ 
++config SPI_FLASH_XTX
++	bool "XTX SPI flash support"
++	help
++	  Add support for various XTX (XTX Technology Limited)
++	  SPI flash chips (XT25xxx).
++
+ endif
+ 
+ config SPI_FLASH_USE_4K_SECTORS
+diff --git a/drivers/mtd/spi/spi-nor-ids.c b/drivers/mtd/spi/spi-nor-ids.c
+index 2b57797954..d772b73a53 100644
+--- a/drivers/mtd/spi/spi-nor-ids.c
++++ b/drivers/mtd/spi/spi-nor-ids.c
+@@ -336,6 +336,10 @@ const struct flash_info spi_nor_ids[] = {
+ 	/* XMC (Wuhan Xinxin Semiconductor Manufacturing Corp.) */
+ 	{ INFO("XM25QH64A", 0x207017, 0, 64 * 1024, 128, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+ 	{ INFO("XM25QH128A", 0x207018, 0, 64 * 1024, 256, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
++#endif
++#ifdef CONFIG_SPI_FLASH_XTX
++	/* XTX Technology (Shenzhen) Limited */
++	{ INFO("xt25f128b", 0x0b4018, 0, 64 * 1024, 256, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+ #endif
+ 	{ },
+ };
+-- 
+2.17.1
+

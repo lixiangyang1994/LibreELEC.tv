@@ -1,0 +1,29 @@
+From c719762dcd5754758cc2dbc3f9a1321b21590b12 Mon Sep 17 00:00:00 2001
+From: Neil Armstrong <narmstrong@baylibre.com>
+Date: Fri, 17 Sep 2021 09:37:05 +0200
+Subject: [PATCH 13/31] FROMGIT: distro_bootcmd: run pci enum for scsi_boot
+ just like it is done for nvme_boot
+
+The SCSI device can be a PCIe adapter, so run pcie enum if enabled.
+
+Signed-off-by: Mark Kettenis <kettenis@openbsd.org>
+Signed-off-by: Neil Armstrong <narmstrong@baylibre.com>
+---
+ include/config_distro_bootcmd.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
+index 2627c2a6a5..f4f6fa8f8a 100644
+--- a/include/config_distro_bootcmd.h
++++ b/include/config_distro_bootcmd.h
+@@ -226,6 +226,7 @@
+ 		"fi\0" \
+ 	\
+ 	"scsi_boot=" \
++		BOOTENV_RUN_PCI_ENUM \
+ 		BOOTENV_RUN_SCSI_INIT \
+ 		BOOTENV_SHARED_BLKDEV_BODY(scsi)
+ #define BOOTENV_DEV_SCSI	BOOTENV_DEV_BLKDEV
+-- 
+2.17.1
+
