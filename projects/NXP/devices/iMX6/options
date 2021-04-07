@@ -25,6 +25,9 @@
   # additional Firmware to use
     FIRMWARE+=" ti-firmware"
 
+  # additional drivers to install
+    ADDITIONAL_DRIVERS=""
+
   # set the addon project
     ADDON_PROJECT="ARMv7"
 
