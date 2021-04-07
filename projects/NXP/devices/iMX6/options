@@ -28,6 +28,9 @@
   # additional drivers to install
     ADDITIONAL_DRIVERS=""
 
+  # additional packages to install:
+    ADDITIONAL_PACKAGES+=" ethmactool"
+
   # set the addon project
     ADDON_PROJECT="ARMv7"
 

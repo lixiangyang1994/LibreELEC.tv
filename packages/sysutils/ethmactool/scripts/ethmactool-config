@@ -25,6 +25,13 @@ from_cmdline() {
   done
 }
 
+from_machineid() {
+  if [ -f /storage/.cache/systemd-machine-id ]; then
+    MAC=$(cut -c 1-12 /storage/.cache/systemd-machine-id)
+    fixup_self_mac
+  fi
+}
+
 aml_from_efuse_gxbb() {
   if [ -e /sys/devices/platform/efuse/efuse0/nvmem ]; then
     MAC=$(od -x -A n -j 0x34 -N 6 /sys/bus/nvmem/devices/efuse0/nvmem | tr -d ' ')
@@ -56,6 +63,9 @@ from_cpu_sn() {
 case $COMPATIBLE in
   amlogic*)
     MAC_STEPS="from_cmdline aml_from_efuse_gxbb aml_from_efuse_gxl aml_from_cpu_sn"
+    ;;
+  fsl*)
+    MAC_STEPS="from_machineid"
     ;;
   *)
     MAC_STEPS="from_cpu_sn"
