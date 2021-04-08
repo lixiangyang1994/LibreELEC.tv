@@ -1,7 +1,7 @@
-From 7f481c5d579d1cc1324ec1fe46ddb74e0648de03 Mon Sep 17 00:00:00 2001
+From 032fd91534fb73a81ab58b29ffea8f0092468213 Mon Sep 17 00:00:00 2001
 From: Dima Azarkin <azdmg@yandex.ru>
 Date: Mon, 15 Feb 2021 14:30:46 +0000
-Subject: [PATCH 4/4] WIP: ARM: dts: imx6qdl: add Bluetooth support to
+Subject: [PATCH 2/2] WIP: ARM: dts: imx6qdl: add Bluetooth support to
  Wandboard C1 and Cubox-i 1.3
 
 Add Bluetooth nodes so the BCM4329/4330 chip(s) used with the Wandboard C1

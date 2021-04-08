@@ -1,7 +1,7 @@
-From 5df3a5a72a545d3fb19186e1d6336ca282078453 Mon Sep 17 00:00:00 2001
+From 781e8ae5c4d14a0580051f7dcbff2da614f15c82 Mon Sep 17 00:00:00 2001
 From: Dima Azarkin <azdmg@yandex.ru>
 Date: Fri, 22 Jan 2021 15:27:43 +0000
-Subject: [PATCH 1/4] FROMGIT: ARM: dts: imx6qdl-wandboard: add scl/sda gpios
+Subject: [PATCH 1/2] FROMGIT: ARM: dts: imx6qdl-wandboard: add scl/sda gpios
  definitions for i2c bus recovery
 
 The i2c bus on imx6qdl-wandboard has intermittent issues where SDA can freeze
