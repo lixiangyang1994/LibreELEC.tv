@@ -138,8 +138,19 @@ do_umount(){
   done
 }
 
+do_writeprotect(){
+  echo  "info: disabling emmc write protection"
+  echo 0 > /sys/block/mmcblk1boot1/force_ro
+  echo 0 > /sys/block/mmcblk1boot0/force_ro
+}
+
 do_write(){
   do_umount
+  case $(dtname) in
+    radxa,zero)
+      do_writeprotect
+      ;;
+  esac
   if [ "${2: -7}" == ".img.gz" ]; then
     echo "info: writing ${2} to ${EMMC}"
     gunzip -c "${2}" | dd of="${EMMC}" bs=1M
